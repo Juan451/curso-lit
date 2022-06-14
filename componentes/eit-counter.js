@@ -1,11 +1,14 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
+import { WiredButton } from "wired-elements/lib/wired-button.js";
+import { WiredCard } from "wired-elements/lib/wired-card.js";
+import { WiredInput } from "wired-elements/lib/wired-input.js";
+import { WiredSlider } from "wired-elements/lib/wired-slider.js";
+import 'dile-input/dile-input.js';
 
 export class EitCounter extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
-      padding: 1em;
-      border: 1px solid #ccc;
     }
     h2 {
       color: red;
@@ -13,11 +16,23 @@ export class EitCounter extends LitElement {
     .parrafo {
       color: blue;
       font-size: 1.5em;
-            }
-    input {
-      width: 30px;
     }
-    @media(min-width: 500px) {
+    dile-input {
+      width: 50px;
+      font-size: 1rem;
+      padding: 0.5em;
+    }
+    wired-button {
+      background-color: #8cf;
+    }
+    wired-button.decrement {
+      background-color: #fcc;
+    }
+    wired-card {
+      margin: 1em;
+      padding: 1em;
+    }
+    @media (min-width: 500px) {
       .parrafo {
         font-size: 3em;
       }
@@ -25,31 +40,61 @@ export class EitCounter extends LitElement {
   `;
   static get properties() {
     return {
-      counter: { type: Number }
+      counter: {
+        type: Number,
+        reflect: true,
+      },
+      quantity: { type: Number },
     };
   }
   constructor() {
     super();
-    this.counter = 0;
+    this.counter = 10;
+    this.quantity = 10;
   }
   render() {
     return html`
-      <slot></slot>
-      <h2>Mi contador</h2>
-      <input id="quantity" type="number" />
-      <p class="parrafo">${this.counter}</p>
-      <button @click="${this.incrementar}">+1</button>
-      <button @click="${this.decrementar}">-1</button>
+      <wired-card elevation="3">
+        <slot></slot>
+        <h2>Mi contador</h2>
+        <p class="parrafo">${this.counter}</p>
+        <p>
+          <!--Hay que poner un punto para bindear a la propiedad del elemento 
+            y no la del atributo-->
+            <!---los atributos son aquellos datos que introducimos en las etiquetas html, cuando yo uso un 
+            componente lo uso a traves de la etiqueta html a usar el html, atributo class, style, id--->
+          <!---las propiedades es algo que depende del javascript, cualquier cosa que este dentro del componente se llama propiedad
+          como counter o checked
+              ---->
+          <dile-input id="quantity" type="number" value="${this.quantity}" label="Cantidad"/>
+          </dile-input>
+        </p>
+        <p>
+          <wired-slider value="10" min="5" max="15" @change="${this.doChangeQuantity}">
+          </wired-slider>
+        </p>
+        <wired-button @click="${this.incrementar}">Incrementar</wired-button>
+        <wired-button @click="${this.decrementar}" class="decrement">Decrementar</wired-button>
+      </wired-card>
     `;
   }
 
+  // get quantity() {
+  //   return this.shadowRoot.getElementById("quantity").value;
+  // }
+
   incrementar() {
-    let quantity = this.shadowRoot.getElementById('parrafo').value;
-    this.counter++;
+    this.counter += parseInt(this.quantity);
+    console.log("quantity ", this.quantity);
   }
 
   decrementar() {
-    this.counter--;
+    this.counter -= parseInt(this.quantity);
+  }
+
+  doChangeQuantity(e) {
+    this.quantity = e.detail.value;
+    //console.log(this.quantity);
   }
 }
-customElements.define('eit-counter', EitCounter);
+customElements.define("eit-counter", EitCounter);
