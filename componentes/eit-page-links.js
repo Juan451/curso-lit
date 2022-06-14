@@ -1,30 +1,18 @@
 import { LitElement, html, css } from 'lit';
-
+import { pagesStyles } from './styles/page-styles.js';
 export class EitPageLinks extends LitElement {
 
-  static styles = css`
+  static styles = [
+    pagesStyles,
+    css`
     :host {
-      display: block;
-    }
-    ul {
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      padding: 0.5em;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      list-style-type: none;
-      margin-right: 0.5em;
-      min-width: 1em;
-      text-align: center;
+      border: 3px solid red;
     }
     li.selected {
-        background-color: #d33;
-        color: #fff;
+      background-color: #32bd16;
+      color: #fff;
     }
-  `;
+  `];
   static get properties() {
     return {
       pages: { type: Array },
