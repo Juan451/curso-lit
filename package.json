@@ -13,6 +13,9 @@
     "@web/dev-server": "^0.1.31"
   },
   "dependencies": {
-    "lit": "^2.2.5"
+    "@lion/button": "^0.18.0",
+    "dile-input": "^3.1.2",
+    "lit": "^2.2.5",
+    "wired-elements": "^3.0.0-rc.6"
   }
 }
