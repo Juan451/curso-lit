@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lit en EscuelaIT</title>
 </head>
+<style>
+    p {
+        margin: 0;
+    }
+</style>
 
 <body>
     <h1>Lit.dev</h1>
@@ -19,10 +24,23 @@
         <h3><a href="http://escuela.it">Contador!!!!!</a></h3>
     </eit-counter> --->
 
-    <eit-switch checked></eit-switch>
-    <eit-page-links></eit-page-links>
+    <eit-card>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, optio accusamus! Illum quibusdam iste, aperiam fugiat incidunt est mollitia earum, laborum, hic eum rerum doloremque aliquam voluptates non. Maiores, possimus.</p>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <!--Si hago un slot con nombre, es totalmente independiente-->
+        <div slot="actions">
+            <a href="#">Accion 1</a>
+        </div>
+    </eit-card>
 
-    <eit-page-links-numpages selectedPage="8" numPages="12"></eit-page-links-numpages>
+    <eit-switch checked></eit-switch>
+    <eit-page-links selectedPage="7"></eit-page-links>
+
+    <eit-page-links-numpages selectedPage="1" numPages="5"></eit-page-links-numpages>
 
     <!--<button id="reset">Reset</button>--->
     <script>
