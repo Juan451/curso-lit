@@ -8,49 +8,14 @@
     <title>Lit en EscuelaIT</title>
 </head>
 <style>
-    p {
-        margin: 0;
-    }
+
 </style>
 
 <body>
     <h1>Lit.dev</h1>
-    <!--<eit-counter counter="10">
-        <h2>Contador!!!!!</h2>
-    </eit-counter>
-    <eit-counter 
-    id="counter"
-    counter="0">
-        <h3><a href="http://escuela.it">Contador!!!!!</a></h3>
-    </eit-counter> --->
 
-    <eit-card>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, optio accusamus! Illum quibusdam iste, aperiam fugiat incidunt est mollitia earum, laborum, hic eum rerum doloremque aliquam voluptates non. Maiores, possimus.</p>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
-        <!--Si hago un slot con nombre, es totalmente independiente-->
-        <div slot="actions">
-            <a href="#">Accion 1</a>
-        </div>
-    </eit-card>
+    <eit-page-switch></eit-page-switch>
 
-    <eit-switch checked></eit-switch>
-    <eit-page-links selectedPage="7"></eit-page-links>
-
-    <eit-page-links-numpages selectedPage="1" numPages="5"></eit-page-links-numpages>
-
-    <!--<button id="reset">Reset</button>--->
-    <script>
-        // document.getElementById('reset').addEventListener('click', function() {
-        //     document.getElementById('counter').counter = 0
-        //     const counter = document.createElement('eit-counter');
-        //     counter.setAttribute('quantity', 1000);
-        //     document.body.appendChild(counter);
-        // })
-    </script>
     <script src="./componentes/index.js" type="module"></script>
 </body>
 
