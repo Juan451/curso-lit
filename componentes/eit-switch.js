@@ -21,7 +21,7 @@ export class EitSwitch extends LitElement {
                 left: 0px;
                 position: relative;
                 border-radius: 50%;
-                background-color: var(--eit-switch-off-state-color, #f66);
+                background-color: var( --eit-switch-off-state-color, #f66);
                 transition: all 0.2s linear;
             }
             /**Selector de atributos */
@@ -34,7 +34,10 @@ export class EitSwitch extends LitElement {
   static get properties() {
     return {
         //refleja el valor de la propiedad en la etiqueta padre
-      checked: { type: Boolean, reflect: true },
+      checked: { 
+        type: Boolean,
+        reflect: true
+      },
     };
   }
 
