@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import "dile-pages/dile-pages.js";
 import "./eit-page-switch.js";
 import "./eit-prop.js";
+import "./eit-page-links.js";
 
 export class EitPageSwitch extends LitElement {
   static styles = [
@@ -13,20 +14,27 @@ export class EitPageSwitch extends LitElement {
   ];
   static get properties() {
     return {
+      pages: { type: Array },
       active: { type: Boolean },
       page: { type: String },
+      test: { type: String },
     };
   }
   constructor() {
     super();
     this.active = false;
-    this.page = "tres";
+    this.page = 'tres';
+    this.test = '5';
+    this.pages = ['uno', 'dos', 'tres'];
   }
   render() {
     return html`
       <!--Si queremos bindear un valor a una propiedad booleana, 
             debemos de usar la sintaxis del interrogante, la propiedad checked
             es del componente eit-switch-->
+      <!-- <eit-prop .propString="${this.test}" propNumber="${this.test}"></eit-prop>   -->
+      <!--Si estas bindeando a un array, hay que poner el punto ".pages"-->
+      <eit-page-links .pages="${this.pages}" selectedPage="${this.page}"></eit-page-links>
       <eit-switch ?checked="${this.active}"></eit-switch>
       <button @click="${this.changeActive}">Cambiar active</button>
       <button @click="${this.showOne}">Cambiar página 1</button>

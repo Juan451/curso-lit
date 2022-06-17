@@ -6,42 +6,34 @@ export class EitPageLinks extends LitElement {
     pagesStyles,
     css`
     :host {
-      border: 3px solid red;
+      display: block;
+      margin-bottom: 1rem;
     }
     li.selected {
       background-color: #32bd16;
-      color: #fff;
     }
   `];
   static get properties() {
     return {
       pages: { type: Array },
-      selectedPage: { type: Number, reflect: true },
+      selectedPage: { type: String },
     };
   }
   constructor() {
     super();
-    this.pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    this.selectedPage = 1;
+    this.pages = [];
+    this.selectedPage = 0;
   }
 
   render() {
     return html`
       <ul>
         ${this.pages.map((page) => html`
-            <li class="${this.createClass(page)}">${page}</li>
+            <li class="${this.selectedPage == page ? 'selected' : ''}"
+            >${page}</li>
         `)}
       </ul>
     `;
-  }
-  createClass(page) {
-    if (page === this.selectedPage && page % 2 === 0) {
-        return 'selected';
-    }
-   if (page + 1 === this.selectedPage) {
-      return 'selected';
-   } 
-      return '';
   }
   
 }
