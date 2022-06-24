@@ -15,14 +15,15 @@ export class EitPageSwitch extends LitElement {
   static get properties() {
     return {
       pages: { type: Array },
-      active: { type: Boolean },
-      page: { type: String },
+      active: { type: Boolean,// reflect: true 
+    },
+      page: { type: String, reflect: true },
       test: { type: String },
     };
   }
   constructor() {
     super();
-    this.active = false;
+    this.active = true;
     this.page = 'tres';
     this.test = '5';
     this.pages = ['uno', 'dos', 'tres'];
@@ -34,14 +35,23 @@ export class EitPageSwitch extends LitElement {
             es del componente eit-switch-->
       <!-- <eit-prop .propString="${this.test}" propNumber="${this.test}"></eit-prop>   -->
       <!--Si estas bindeando a un array, hay que poner el punto ".pages"-->
-      <eit-page-links .pages="${this.pages}" selectedPage="${this.page}"></eit-page-links>
-      <eit-switch ?checked="${this.active}"></eit-switch>
+      <eit-page-links .pages="${this.pages}" selectedPage="${this.page}"
+      @eit-page-links-change="${this.doSelectedChange}"
+      ></eit-page-links>
+      <!---Esto sirve para escuchar el evento del componente eit-switch-->
+      <eit-switch ?checked="${this.active}"
+      @eit-switch-change="${this.changeActiveListener}"
+      ></eit-switch>
       <button @click="${this.changeActive}">Cambiar active</button>
       <button @click="${this.showOne}">Cambiar página 1</button>
       <!--Cuando pones una arroba, haces un bindeo al-->
       <button @click="${this.show("dos")}">Cambiar página 2</button>
       <button @click="${this.show("tres")}">Cambiar página 3</button>
-      ${this.pagesTemplate}
+
+      ${this.active ? 
+        this.pagesTemplate 
+        : ''
+        }
     `;
   }
 
@@ -98,8 +108,12 @@ export class EitPageSwitch extends LitElement {
   showOne() {
     this.page = "uno";
   }
-  //   showTwo() {
-  //     this.page = 'dos';
-  //   }
+  changeActiveListener(e) {
+    //aqui cogemos la informacion que recogemos del eit-switch
+    this.active = e.detail.checked;
+  }
+  doSelectedChange(e) {
+    this.page = e.detail.selectedPage;
+  }
 }
 customElements.define("eit-page-switch", EitPageSwitch);

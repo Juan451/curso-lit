@@ -8,17 +8,71 @@
     <title>Lit en EscuelaIT</title>
 </head>
 <style>
-
+    /* eit-page-switch {
+        border: 3px solid red;
+    }
+    eit-page-switch[active] {
+        border: 3px solid blue;
+    } */
+    .menu {
+        margin: 0;
+    }
 </style>
-
 <body>
     <h1>Lit.dev</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi asperiores praesentium qui quaerat numquam minus ad consectetur quae eveniet sequi, id nisi consequuntur facilis perferendis! Eaque delectus itaque ad ullam.</p>
 
-    <eit-page-switch></eit-page-switch>
 
-    <eit-page-links pages="[1,4,8]" selectedPage="4"></eit-page-links>
+    <!-- <eit-page-switch active page="uno" id="intercambiador"></eit-page-switch>
+    <button>Cambiar pagina</button> -->
+    <!-- <eit-page-links id="elem" pages="[1,4,8]" selectedPage="4"></eit-page-links> -->
+
+    <eit-menu-overlay>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum sunt nobis ipsa molestiae, eos enim vero impedit accusantium dicta illum iste delectus quos distinctio officiis repudiandae dolor atque nemo maxime?</p>
+        <span slot="trigger">Abre el menú</span>
+        <div class="menu" slot="menu">
+            <p>Loremi ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum sunt nobis ipsa molestiae, eos enim vero impedit accusantium dicta illum iste delectus quos distinctio officiis repudiandae dolor atque nemo maxime?</p>
+        </div>
+    </eit-menu-overlay>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio cupiditate, mollitia sapiente esse consequuntur id blanditiis dolorem facere! Repellat architecto, cumque eaque ad sunt nam repellendus provident. Omnis, quos voluptates!</p>
+
+    <!-- <eit-show-click></eit-show-click> -->
+    
 
     <script src="./componentes/index.js" type="module"></script>
+    <button>quitar elemenento</button>
+
+    <form action="http://php-sandbox.test/recibir.php" method="post">
+        <dw-input-checkbox name="elinputcheckbox"></dw-input-checkbox>
+        <p><button>enviar</button></p>
+    </form>
+    <hr>
+
+    <eit-counter quantity="1"></eit-counter>
+    <script>
+        document.querySelector('button').addEventListener('click', () => {
+            //borra el elemento y hace un disconnectedCallback
+            // document.querySelector('eit-menu-overlay').remove();
+            //borro el clic del elemento eit-show-click
+            document.querySelector('eit-show-click').remove();
+        })
+    </script>
+    <!-- <script>
+        document.querySelector("button").addEventListener('click', function() {
+            let intercambiador = document.getElementById('intercambiador');
+            console.log('atributo', intercambiador.getAttribute('page'));
+            console.log('propiedad', intercambiador.page);
+        });
+    </script> -->
+
+    <script>
+        //cuando el DOM esta listo, pues crea el elemento que es el componente
+        //creado en base a la etiqueta del dicho componente 'eit-menu-overlay'
+        document.addEventListener('DOMContentLoaded', () => {
+            let menu = document.createElement('eit-menu-overlay');
+        });
+
+    </script>
 </body>
 
 </html>

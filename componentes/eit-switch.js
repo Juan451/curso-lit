@@ -55,6 +55,21 @@ export class EitSwitch extends LitElement {
 
   toggle() {
     this.checked = !this.checked;
+    this.dispatchEvent(new CustomEvent('eit-switch-change', {
+        //bubbles: false → solo avisaría al padre, no a los abuelos,
+        //es decir el evento no escalaria al abuelo
+        bubbles: true,
+        //composed: true → permite transmisión a 
+        //través del shadow DOM.
+        composed: true,
+        detail: {
+          //ponemos poner directamente lo propiedad checked,
+          ///si este componente en el futuro tiene que avisar mas cosas
+          //tengo que avisar de mas valores,
+          checked: this.checked
+       // element: this,
+        }
+    }))
   }
 }
 customElements.define('eit-switch', EitSwitch);
