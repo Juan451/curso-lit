@@ -43,6 +43,23 @@ export class EitCounter extends LitElement {
       counter: {
         type: Number,
         reflect: true,
+     /*  Declaración para 
+          propiedades que permite 
+          decidir qué tan "importante" 
+          es un cambio en su valor 
+          para que merezca la pena la 
+          actualización del template. */
+
+        //para ver como cambia la propiedad recibe 2
+        //parametros
+        //evalua si hay cambios en las propiedades
+        //tanto de valor como tipo
+        hasChanged: (newValue, oldValue) => {
+          //si es multiplo de 5, la propiedad
+          //se actualiza es decir
+          //saldrian valores multiplos de 5
+         return  newValue % 5 === 0;
+        }
       },
       quantity: { type: Number },
     };
