@@ -45,7 +45,6 @@ export class EitPageLinks extends LitElement {
           `
         )}
       </ul>
-      ${this.selectedPage}
     `;
   }
 
