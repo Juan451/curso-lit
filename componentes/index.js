@@ -7,3 +7,7 @@ import './eit-page-switch.js';
 import './eit-menu-overlay.js';
 import './eit-show-click.js';
 import './dw-input-checkbox.js';
+import './eit-clock.js';
+import './eit-clock-requestupdate.js';
+import './dw-counter-show5-lifecycle.js';
+import './user-list.js';
