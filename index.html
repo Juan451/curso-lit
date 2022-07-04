@@ -17,12 +17,19 @@
     .menu {
         margin: 0;
     }
+    div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 </style>
 <body>
     <h1>Lit.dev</h1>
     <!--actualizar el template automaticamente-->
     <eit-clock></eit-clock>
-    <user-list></user-list>
+    <div>
+        <user-list></user-list>
+        <user-list-optimized></user-list-optimized>
+    </div>
     <!--<eit-clock-requestupdate></eit-clock-requestupdate> -->
     
     <!-- <dw-counter-show5-lifecycle></dw-counter-show5-lifecycle> -->

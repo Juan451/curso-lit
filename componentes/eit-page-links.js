@@ -50,6 +50,7 @@ export class EitPageLinks extends LitElement {
 
   setPage(page) {
     this.selectedPage = page;
+    //evento que escala a user-list
     this.dispatchEvent(new CustomEvent('eit-page-links-change', {
       bubbles: true,
       composed: true,
