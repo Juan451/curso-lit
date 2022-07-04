@@ -11,3 +11,4 @@ import './eit-clock.js';
 import './eit-clock-requestupdate.js';
 import './dw-counter-show5-lifecycle.js';
 import './user-list.js';
+import './user-list-optimized.js';
