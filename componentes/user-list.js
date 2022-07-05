@@ -16,7 +16,7 @@ export class UserList extends PerformanceMixin(LitElement) {
   ];
   static get properties() {
     return {
-      users: { type: Array },
+      // users: { type: Array },
       orderTypes: { type: Array },
       selectedOrder: { type: String },
       times: { type: Number },
