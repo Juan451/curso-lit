@@ -7,7 +7,15 @@ import { UserList } from "./user-list.js";
 //usar las caracteristicas de esa clase
 //esto esta optimizado, por lo que el tiempo de respuesta es mas corto
 export class UserListOptimized extends UserList {
-  get directiveRepeatTemplate() {
+//aqui puyedo usar una superclase dentro de la clase
+  render() {
+    return html`
+        <!---Aqui estoy usando el render de la clase UserList, ya que es la que extiendo--->
+        ${super.render()}
+        ${this.footerTemplate}
+    `;
+}
+  get mapRepeatTemplate() {
     //aqui usamos en un getter la directiva de repeticion "repeat"
     //primero ponemos el array, luego el identificador del array
     //hace una identificador con los usuarios unicos y lo uso para
@@ -26,7 +34,7 @@ export class UserListOptimized extends UserList {
 
   get footerTemplate() {
     return html`
-      <footer>hemos listado ${this.orderedUsers.length} usuarios</footer>
+        <footer>Hemos listado ${this.orderedUsers.length} usuarios</footer>
     `;
 }
   
